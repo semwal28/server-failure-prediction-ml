@@ -1,0 +1,12 @@
+[ 2026-03-09 20:10:09,259 ] 29 root - INFO - Entered the data ingestion method
+[ 2026-03-09 20:10:09,259 ] 39 root - INFO - Reading dataset from C:\Users\semwa\OneDrive\Desktop\Server Failure  prediction\notebook\data\predictive_maintenance.csv
+[ 2026-03-09 20:10:09,311 ] 49 root - INFO - Train-test split initiated
+[ 2026-03-09 20:10:09,354 ] 63 root - INFO - Data ingestion completed successfully
+[ 2026-03-09 20:10:09,369 ] 89 root - INFO - Read train and test data completed
+[ 2026-03-09 20:10:09,369 ] 91 root - INFO - Obtaining preprocessing object
+[ 2026-03-09 20:10:09,369 ] 62 root - INFO - Numerical columns scaling completed
+[ 2026-03-09 20:10:09,370 ] 64 root - INFO - Categorical columns encoding completed
+[ 2026-03-09 20:10:09,371 ] 108 root - INFO - Applying preprocessing object on training dataframe and testing dataframe
+[ 2026-03-09 20:10:09,390 ] 126 root - INFO - Saved preprocessing object
+[ 2026-03-09 20:10:09,393 ] 30 root - INFO - Splitting training and test input data
+[ 2026-03-09 20:11:53,025 ] 79 root - INFO - Best model found, model name: Decision Tree, R2 score: 0.40817896668047593

@@ -8,10 +8,10 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
+
 
 
 @dataclass
@@ -30,11 +30,11 @@ class DataTransformation:
         try:
 
             numerical_columns = [
-                "Air temperature [K]",
-                "Process temperature [K]",
-                "Rotational speed [rpm]",
-                "Torque [Nm]",
-                "Tool wear [min]"
+                "Air_temperature",
+                "Process_temperature",
+                "Rotational_speed",
+                "Torque",
+                "Tool_wear"
             ]
 
             categorical_columns = [
@@ -98,10 +98,10 @@ class DataTransformation:
             drop_columns = ["UDI","Product ID","Failure Type"]
 
 
-            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
+            input_feature_train_df=train_df.drop(columns=[target_column_name])
             target_feature_train_df=train_df[target_column_name]
 
-            input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
+            input_feature_test_df=test_df.drop(columns=[target_column_name])
             target_feature_test_df=test_df[target_column_name]
 
 

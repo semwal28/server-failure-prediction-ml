@@ -1,0 +1,12 @@
+[ 2026-03-09 20:23:33,353 ] 29 root - INFO - Entered the data ingestion method
+[ 2026-03-09 20:23:33,353 ] 39 root - INFO - Reading dataset from C:\Users\semwa\OneDrive\Desktop\Server Failure  prediction\notebook\data\predictive_maintenance.csv
+[ 2026-03-09 20:23:33,407 ] 49 root - INFO - Train-test split initiated
+[ 2026-03-09 20:23:33,450 ] 63 root - INFO - Data ingestion completed successfully
+[ 2026-03-09 20:23:33,468 ] 89 root - INFO - Read train and test data completed
+[ 2026-03-09 20:23:33,468 ] 91 root - INFO - Obtaining preprocessing object
+[ 2026-03-09 20:23:33,468 ] 62 root - INFO - Numerical columns scaling completed
+[ 2026-03-09 20:23:33,468 ] 64 root - INFO - Categorical columns encoding completed
+[ 2026-03-09 20:23:33,470 ] 108 root - INFO - Applying preprocessing object on training dataframe and testing dataframe
+[ 2026-03-09 20:23:33,488 ] 126 root - INFO - Saved preprocessing object
+[ 2026-03-09 20:23:33,492 ] 30 root - INFO - Splitting training and test input data
+[ 2026-03-09 20:25:17,488 ] 79 root - INFO - Best model found, model name: Random Forest, R2 score: 0.4419973114415916

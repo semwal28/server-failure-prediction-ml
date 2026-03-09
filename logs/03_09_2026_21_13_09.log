@@ -1,0 +1,9 @@
+[ 2026-03-09 21:13:10,308 ] 29 root - INFO - Entered the data ingestion method
+[ 2026-03-09 21:13:10,308 ] 39 root - INFO - Reading dataset from C:\Users\semwa\OneDrive\Desktop\Server Failure  prediction\notebook\data\predictive_maintenance.csv
+[ 2026-03-09 21:13:10,359 ] 49 root - INFO - Train-test split initiated
+[ 2026-03-09 21:13:10,402 ] 63 root - INFO - Data ingestion completed successfully
+[ 2026-03-09 21:13:10,419 ] 89 root - INFO - Read train and test data completed
+[ 2026-03-09 21:13:10,419 ] 91 root - INFO - Obtaining preprocessing object
+[ 2026-03-09 21:13:10,420 ] 62 root - INFO - Numerical columns scaling completed
+[ 2026-03-09 21:13:10,420 ] 64 root - INFO - Categorical columns encoding completed
+[ 2026-03-09 21:13:10,423 ] 108 root - INFO - Applying preprocessing object on training dataframe and testing dataframe

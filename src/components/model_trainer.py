@@ -2,6 +2,7 @@ import os
 import sys
 from dataclasses import dataclass
 
+from sklearn.metrics import r2_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -9,8 +10,7 @@ from sklearn.metrics import accuracy_score
 
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import save_object
-
+from src.utils import save_object, evaluate_models
 
 @dataclass
 class ModelTrainerConfig:
@@ -25,7 +25,7 @@ class ModelTrainer:
 
     def initiate_model_trainer(self,train_array,test_array):
 
-        try:
+      try:
 
             logging.info("Splitting training and test input data")
 
@@ -42,21 +42,33 @@ class ModelTrainer:
                 "Decision Tree": DecisionTreeClassifier(),
                 "Random Forest": RandomForestClassifier()
             }
+            params = {
 
+                "Logistic Regression": {
+                    "penalty": ["l2"],
+                    "C": [0.01, 0.1, 1, 10],
+                    "solver": ["lbfgs", "liblinear"],
+                    "max_iter": [100, 200, 500]
+                },
 
-            model_report = {}
+                "Decision Tree": {
+                    "criterion": ["gini", "entropy"],
+                    "max_depth": [None, 5, 10, 20],
+                    "min_samples_split": [2, 5, 10],
+                    "min_samples_leaf": [1, 2, 4]
+                },
 
-            for model_name,model in models.items():
+                "Random Forest": {
+                    "n_estimators": [50, 100, 200],
+                    "criterion": ["gini", "entropy"],
+                    "max_depth": [None, 10, 20],
+                    "min_samples_split": [2, 5],
+                    "min_samples_leaf": [1, 2]
+                }
 
-                model.fit(X_train,y_train)
+}
 
-                y_pred = model.predict(X_test)
-
-                score = accuracy_score(y_test,y_pred)
-
-                model_report[model_name] = score
-
-
+            model_report: dict = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models, params=params)
             best_model_score = max(model_report.values())
 
             best_model_name = list(model_report.keys())[
@@ -64,10 +76,10 @@ class ModelTrainer:
             ]
 
             best_model = models[best_model_name]
+            logging.info(f"Best model found, model name: {best_model_name}, R2 score: {best_model_score}")
+            best_model_score = max(model_report.values())
 
-
-            logging.info(f"Best Model Found: {best_model_name}")
-
+         
 
             save_object(
 
@@ -75,10 +87,10 @@ class ModelTrainer:
                 obj=best_model
 
             )
-
-
-            return best_model_score
-
-
-        except Exception as e:
-            raise CustomException(e,sys)
+            predicted = best_model.predict(X_test)
+            accuracy_score1 = accuracy_score(y_test, predicted)
+            return accuracy_score1
+       
+       
+      except Exception as e:
+        raise CustomException(e,sys)
